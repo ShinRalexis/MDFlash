@@ -24,10 +24,19 @@
   <a href="https://liberapay.com/MetaDarko/donate"><img src="https://img.shields.io/liberapay/receives/MetaDarko?logo=liberapay&label=liberapay" alt="Liberapay"></a>
 </p>
 
+<br>
+
 <p align="center">
-  <a href="https://github.com/ShinRalexis/MDFlash/releases/latest/download/MDFlash-Setup-2.0.0.exe"><b>⬇ Download MDFlash for Windows</b></a>
-  &nbsp;·&nbsp; 5 MB installer &nbsp;·&nbsp; no administrator rights needed
+  <a href="https://github.com/ShinRalexis/MDFlash/releases/latest/download/MDFlash-Setup-2.0.0.exe">
+    <img src="https://img.shields.io/badge/⬇%20Download%20for%20Windows-MDFlash%202.0.0-2a3b72?style=for-the-badge&labelColor=ffb21e" alt="Download MDFlash 2.0.0 for Windows" height="56">
+  </a>
 </p>
+
+<p align="center">
+  <sub>Windows 10 and 11 (64-bit) · 5 MB installer · no administrator rights needed · <a href="https://github.com/ShinRalexis/MDFlash/releases/latest">all releases</a></sub>
+</p>
+
+<br>
 
 ---
 
@@ -92,7 +101,13 @@
 
 ## Install
 
-1. Download **[MDFlash-Setup-2.0.0.exe](https://github.com/ShinRalexis/MDFlash/releases/latest/download/MDFlash-Setup-2.0.0.exe)**.
+<p align="center">
+  <a href="https://github.com/ShinRalexis/MDFlash/releases/latest/download/MDFlash-Setup-2.0.0.exe">
+    <img src="https://img.shields.io/badge/⬇%20Download%20for%20Windows-MDFlash%202.0.0-2a3b72?style=for-the-badge&labelColor=ffb21e" alt="Download MDFlash 2.0.0 for Windows" height="56">
+  </a>
+</p>
+
+1. Download **[MDFlash-Setup-2.0.0.exe](https://github.com/ShinRalexis/MDFlash/releases/latest/download/MDFlash-Setup-2.0.0.exe)** with the button above.
 2. Run it. The setup speaks the same nine languages, installs for the current user without administrator rights (or for all users, if you choose), and can make MDFlash the program that opens `.md` files.
 
 **Requirements:** Windows 10 or 11, 64-bit, with Microsoft Edge WebView2 Runtime (already part of Windows 11; the setup points you to it if it is missing).
