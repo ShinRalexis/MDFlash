@@ -1,0 +1,18 @@
+/* Impaginazione dei file HTML esportati */
+body.mdflash-export {
+  margin: 0;
+  background: var(--bg, #fff);
+  color: var(--text, #1f2328);
+}
+body.mdflash-export .markdown-body {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 48px 32px 96px;
+}
+@media (max-width: 640px) {
+  body.mdflash-export .markdown-body { padding: 24px 16px 64px; }
+}
+@media print {
+  body.mdflash-export .markdown-body { max-width: none; padding: 0; }
+  body.mdflash-export pre, body.mdflash-export table, body.mdflash-export figure { break-inside: avoid; }
+}

@@ -1,0 +1,165 @@
+/* Aspetto del testo del documento: vale nell'editor (.milkdown .ProseMirror)
+ * e nei file esportati (.markdown-body). Il prefisso :is(...) ha la stessa
+ * forza dei selettori di Crepe, e questo file viene dopo, quindi prevale. */
+
+:is(.markdown-body, .milkdown .ProseMirror) {
+  font-family: var(--font-body-user, var(--font-body));
+  font-size: var(--doc-font-size, 16px);
+  line-height: var(--doc-line-height, 1.7);
+  color: var(--text);
+  overflow-wrap: break-word;
+  font-variant-ligatures: common-ligatures;
+  text-rendering: optimizeLegibility;
+
+  & > :first-child { margin-top: 0 !important; }
+
+  & p {
+    font-size: 1em;
+    line-height: var(--doc-line-height, 1.7);
+    margin: 0 0 0.9em;
+    padding: 0;
+  }
+
+  & h1, & h2, & h3, & h4, & h5, & h6 {
+    font-family: var(--font-heading);
+    font-weight: var(--heading-weight, 600);
+    color: var(--h-color);
+    line-height: 1.25;
+    margin: 1.6em 0 0.6em;
+    padding: 0;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  & h1 { font-size: 2em; letter-spacing: -0.02em; padding-bottom: 0.3em; border-bottom: 1px solid var(--hr); }
+  & h2 { font-size: 1.5em; padding-bottom: 0.25em; border-bottom: 1px solid var(--hr); }
+  & h3 { font-size: 1.25em; }
+  & h4 { font-size: 1.06em; }
+  & h5 { font-size: 0.94em; }
+  & h6 { font-size: 0.88em; color: var(--text-soft); }
+
+  & a { color: var(--link); text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--link) 40%, transparent); text-underline-offset: 0.18em; }
+  & a:hover { text-decoration-color: var(--link); }
+  & a.wikilink { text-decoration-style: dotted; cursor: pointer; }
+  & a.wikilink::before { content: "[["; opacity: 0.35; }
+  & a.wikilink::after { content: "]]"; opacity: 0.35; }
+
+  & strong { font-weight: 650; }
+  & mark { background: var(--mark-bg); color: var(--mark-fg, inherit); padding: 0.05em 0.15em; border-radius: 3px; }
+  & del, & s { color: var(--text-soft); }
+
+  & code {
+    font-family: var(--font-code-user, var(--font-code));
+    font-size: 0.875em;
+    color: var(--inline-code-fg);
+    background: var(--inline-code-bg);
+    padding: 0.12em 0.36em;
+    border-radius: 4px;
+    display: inline;
+    line-height: inherit;
+    font-variant-ligatures: none;
+  }
+  & pre {
+    font-family: var(--font-code-user, var(--font-code));
+    background: var(--code-bg);
+    color: var(--code-fg);
+    border: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+    padding: 0.9em 1.1em;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 0.875em;
+    line-height: 1.55;
+    margin: 0 0 1em;
+    tab-size: 4;
+  }
+  & pre code { background: none; padding: 0; color: inherit; font-size: 1em; border-radius: 0; }
+
+  & blockquote {
+    margin: 0 0 1em;
+    padding: 0.1em 1.1em;
+    border-left: 4px solid var(--quote-border);
+    color: var(--quote-text);
+  }
+  & blockquote > :last-child { margin-bottom: 0; }
+
+  & ul, & ol { margin: 0 0 0.9em; padding-left: 1.8em; }
+  & li { margin: 0.2em 0; }
+  & li > p { margin: 0; }
+  & li > ul, & li > ol { margin-bottom: 0; }
+
+  & hr { border: none; height: 1px; background: var(--hr); margin: 2em 0; padding: 0; }
+
+  & table { border-collapse: collapse; margin: 0 0 1em; display: block; overflow-x: auto; max-width: 100%; }
+  & th, & td { border: 1px solid var(--border); padding: 0.42em 0.85em; text-align: left; vertical-align: top; }
+  & th { background: var(--table-head); font-weight: 600; }
+  & th > p, & td > p { margin: 0; padding: 0; }
+  & tbody tr:nth-child(2n) td { background: var(--table-stripe); }
+
+  & img { max-width: 100%; border-radius: 4px; }
+  & figure { margin: 1em 0 1.2em; text-align: center; }
+  & figcaption { font-size: 0.86em; color: var(--text-soft); margin-top: 0.4em; }
+
+  & .katex-display { margin: 1em 0; overflow-x: auto; overflow-y: hidden; }
+  & .math-block { margin: 1em 0; overflow-x: auto; }
+  & .diagram { margin: 1em 0; text-align: center; }
+  & .diagram svg { max-width: 100%; height: auto; }
+
+  & sup a, & .footnotes a { text-decoration: none; }
+
+  /* note a piè di pagina: [^1] nel testo e la definizione in fondo */
+  & sup[data-label] { color: var(--link); font-size: 0.75em; padding: 0 0.1em; cursor: default; }
+  & sup[data-label]::before { content: "["; }
+  & sup[data-label]::after { content: "]"; }
+  & dl[data-label] {
+    display: flex; gap: 0.6em; margin: 0 0 0.4em; padding-top: 0.4em;
+    font-size: 0.9em; color: var(--text-soft);
+    border-top: 1px solid color-mix(in srgb, var(--hr) 70%, transparent);
+  }
+  & dl[data-label] + dl[data-label] { border-top: none; padding-top: 0; }
+  & dl[data-label] dt { flex: none; font-weight: 600; color: var(--link); }
+  & dl[data-label] dt::after { content: "."; }
+  & dl[data-label] dd { margin: 0; flex: 1; min-width: 0; }
+  & dl[data-label] dd > p { margin: 0; }
+}
+
+/* Accademico: testo giustificato e titoli numerati, come un articolo LaTeX */
+[data-theme="accademico"] :is(.markdown-body, .milkdown .ProseMirror) {
+  text-align: justify;
+  hyphens: auto;
+  counter-reset: h2;
+  & h1 { text-align: center; border: none; font-size: 1.9em; margin-bottom: 1em; }
+  & h2 { border: none; font-size: 1.35em; counter-reset: h3; }
+  & h2::before { counter-increment: h2; content: counter(h2) "\2002"; }
+  & h3 { font-size: 1.12em; }
+  & h3::before { counter-increment: h3; content: counter(h2) "." counter(h3) "\2002"; }
+  & table { border-top: 2px solid var(--text); border-bottom: 2px solid var(--text); }
+  & th, & td { border: none; }
+  & th { border-bottom: 1px solid var(--text); }
+  & blockquote { border-left: none; font-style: italic; padding: 0 2em; }
+}
+
+/* Carta e Seppia: titoli senza riga sotto, più aria */
+[data-theme="carta"] :is(.markdown-body, .milkdown .ProseMirror),
+[data-theme="seppia"] :is(.markdown-body, .milkdown .ProseMirror) {
+  & h1, & h2 { border-bottom: none; }
+  & h1 { font-size: 2.2em; }
+  & blockquote { font-style: italic; }
+}
+
+/* Evidenziazione della sintassi nei file esportati (classi "tok-" di Lezer) */
+.markdown-body pre {
+  & .tok-keyword, & .tok-operatorKeyword { color: var(--syn-keyword); }
+  & .tok-string, & .tok-string2 { color: var(--syn-string); }
+  & .tok-number, & .tok-bool, & .tok-atom { color: var(--syn-number); }
+  & .tok-comment { color: var(--syn-comment); font-style: italic; }
+  & .tok-variableName.tok-definition, & .tok-function { color: var(--syn-function); }
+  & .tok-typeName, & .tok-className, & .tok-namespace { color: var(--syn-type); }
+  & .tok-propertyName, & .tok-attributeName { color: var(--syn-property); }
+  & .tok-punctuation, & .tok-operator { color: var(--syn-punct); }
+  & .tok-meta { color: var(--syn-meta); }
+  & .tok-heading { color: var(--syn-heading); font-weight: 700; }
+  & .tok-link, & .tok-url { color: var(--syn-link); }
+}
+
+.markdown-body li.task { list-style: none; margin-left: -1.4em; }
+.markdown-body li.task > input { margin: 0 0.5em 0 0; vertical-align: -0.1em; }
+.markdown-body li.task > p { display: inline; }

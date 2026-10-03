@@ -1,0 +1,20 @@
+{
+  "name": "mdflash",
+  "version": "2.0.0",
+  "private": true,
+  "description": "MDFlash: WYSIWYG Markdown editor for Windows, written in C with WebView2",
+  "author": "Elecktra Studio, ShinRalexis",
+  "license": "MIT",
+  "repository": "github:ShinRalexis/MDFlash",
+  "scripts": {
+    "build": "build.cmd",
+    "test": "node tools/e2e.mjs",
+    "test:roundtrip": "node tools/roundtrip.mjs",
+    "check:i18n": "node tools/i18n-keys.mjs",
+    "screenshots": "node tools/readme-shots.mjs",
+    "icons": "node tools/render-icon.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.55.0"
+  }
+}

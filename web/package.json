@@ -1,0 +1,26 @@
+{
+  "name": "mdflash-web",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Interfaccia di scrittura di MDFlash (caricata da WebView2)",
+  "scripts": {
+    "build": "node build.mjs",
+    "watch": "node build.mjs --watch"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  },
+  "dependencies": {
+    "@codemirror/lang-markdown": "^6.5.2",
+    "@codemirror/language-data": "^6.5.2",
+    "@codemirror/search": "^6.7.2",
+    "@codemirror/state": "^6.7.6",
+    "@codemirror/view": "^6.43.13",
+    "@milkdown/crepe": "^7.22.2",
+    "@milkdown/kit": "^7.22.2",
+    "codemirror": "^6.0.2",
+    "katex": "^0.19.0",
+    "mermaid": "^12.1.0",
+    "prosemirror-search": "^1.1.1"
+  }
+}

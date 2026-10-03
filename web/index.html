@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="github">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MDFlash</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body class="no-docs">
+  <div id="app">
+    <aside id="sidebar" aria-label="Barra laterale"></aside>
+    <div id="sidebar-grip" role="separator" aria-orientation="vertical" title="Trascina per ridimensionare (doppio clic: larghezza iniziale)"></div>
+    <main id="main">
+      <div id="tabbar"></div>
+      <div id="findbar" hidden role="search"></div>
+      <div id="docs">
+        <div id="empty-state"></div>
+      </div>
+      <footer id="statusbar"></footer>
+    </main>
+    <aside id="ai-panel" hidden aria-label="Assistente di scrittura"></aside>
+  </div>
+  <div id="print-root"></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>

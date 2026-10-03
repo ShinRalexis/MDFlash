@@ -1,0 +1,30 @@
+import { createRequire } from "node:module";
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { loadPlaywright } from "./playwright.mjs";
+import { serve } from "./serve.mjs";
+const require = createRequire(import.meta.url);
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const { chromium } = loadPlaywright(require, ROOT);
+const file = process.argv[2] || path.join(ROOT, "tools/fixtures/roundtrip.md");
+const text = fs.readFileSync(file, "utf8").replace(/\r\n/g, "\n");
+const server = await serve(5179);
+const browser = await chromium.launch();
+const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+page.on("pageerror", (e) => console.log("pageerror:", e.message));
+await page.goto("http://localhost:5179/index.html");
+await page.waitForSelector("body.ready");
+const out = await page.evaluate(async (t) => {
+  window.__mdflashMock.memFs.set("C:\\prova\\doc.md", { text: t, mtime: 1 });
+  const { app } = window.__mdflash;
+  const { openPath } = app; // non esportato: si usa il comando
+  window.__mdflashMock.emit("openFiles", { paths: ["C:\\prova\\doc.md"] });
+  await new Promise((r) => setTimeout(r, 1500));
+  const d = app.active;
+  return { dirty: d.isDirty(), text: d.fullText(), title: d.title };
+}, text);
+await page.screenshot({ path: path.join(ROOT, "build/roundtrip.png"), fullPage: false });
+fs.writeFileSync(path.join(ROOT, "build/roundtrip-out.md"), out.text);
+console.log("titolo:", out.title, "| modificato dopo l'apertura:", out.dirty);
+await browser.close(); server.close();

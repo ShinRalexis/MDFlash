@@ -1,0 +1,32 @@
+#include <windows.h>
+
+1 ICON "../assets/mdflash.ico"
+2 ICON "../assets/mdfile.ico"
+1 RT_MANIFEST "app.manifest"
+
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION 2,0,0,0
+PRODUCTVERSION 2,0,0,0
+FILEOS VOS_NT_WINDOWS32
+FILETYPE VFT_APP
+BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+    BLOCK "041004B0"
+    BEGIN
+      VALUE "CompanyName", "Elecktra Studio"
+      VALUE "FileDescription", "MDFlash, editor Markdown"
+      VALUE "FileVersion", "2.0.0"
+      VALUE "InternalName", "MDFlash"
+      VALUE "OriginalFilename", "MDFlash.exe"
+      VALUE "ProductName", "MDFlash"
+      VALUE "ProductVersion", "2.0.0"
+      VALUE "LegalCopyright", "Copyright (C) 2026 Elecktra Studio - ShinRalexis - MIT"
+      VALUE "Comments", "https://github.com/ShinRalexis"
+    END
+  END
+  BLOCK "VarFileInfo"
+  BEGIN
+    VALUE "Translation", 0x0410, 1200
+  END
+END

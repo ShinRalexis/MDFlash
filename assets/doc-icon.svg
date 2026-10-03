@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a3b72"/>
+      <stop offset="1" stop-color="#17213f"/>
+    </linearGradient>
+    <linearGradient id="bolt" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe066"/>
+      <stop offset="1" stop-color="#ffb21e"/>
+    </linearGradient>
+  </defs>
+  <!-- foglio con l'angolo piegato -->
+  <path d="M44 12h120l52 52v172a8 8 0 0 1-8 8H44a8 8 0 0 1-8-8V20a8 8 0 0 1 8-8z" fill="#ffffff" stroke="#b9c0cc" stroke-width="6"/>
+  <path d="M164 12v44a8 8 0 0 0 8 8h44" fill="#e8ebf1" stroke="#b9c0cc" stroke-width="6" stroke-linejoin="round"/>
+  <rect x="52" y="96" width="152" height="132" rx="22" fill="url(#bg)"/>
+  <g transform="translate(58 98) scale(0.555)">
+    <path fill="#ffffff" d="M18 188V68h29l17 51 17-51h29v120H88v-72l-16 48H56l-16-48v72z"/>
+    <path fill="#ffffff" fill-rule="evenodd" d="M148 68h32c33 0 54 22 54 60s-21 60-54 60h-32zM170 89v78h9c19 0 31-14 31-39s-12-39-31-39z"/>
+    <path d="M147 20 102 130h27l-15 106 49-126h-27l23-90z" fill="url(#bolt)" stroke="#1f2c55" stroke-width="9" stroke-linejoin="round" paint-order="stroke"/>
+  </g>
+</svg>

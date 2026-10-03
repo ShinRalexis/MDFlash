@@ -1,0 +1,24 @@
+import { createRequire } from "node:module";
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { loadPlaywright } from "./playwright.mjs";
+import { serve } from "./serve.mjs";
+const require = createRequire(import.meta.url);
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const { chromium } = loadPlaywright(require, ROOT);
+const text = fs.readFileSync(path.join(ROOT, "tools/fixtures/roundtrip.md"), "utf8");
+const code = fs.readFileSync(process.argv[2], "utf8");
+const server = await serve(5179);
+const browser = await chromium.launch();
+const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+page.on("pageerror", (e) => console.log("pageerror:", e.message));
+await page.goto("http://localhost:5179/index.html");
+await page.waitForSelector("body.ready");
+await page.evaluate(async (t) => {
+  window.__mdflashMock.memFs.set("C:/prova/doc.md", { text: t, mtime: 1 });
+  window.__mdflashMock.emit("openFiles", { paths: ["C:/prova/doc.md"] });
+  await new Promise((r) => setTimeout(r, 1500));
+}, text);
+console.log(await page.evaluate(code));
+await browser.close(); server.close();

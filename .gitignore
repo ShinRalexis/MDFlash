@@ -1,0 +1,6 @@
+node_modules/
+web/node_modules/
+build/
+dist/
+_archivio_electron/
+web/styles/export-entry.css
